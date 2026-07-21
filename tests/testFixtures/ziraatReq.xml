@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <SorgulaHesapHareketZamanIleResponse xmlns="http://tempuri.org/">
+      <SorgulaHesapHareketZamanIleResult>
+        <hataKodu>00</hataKodu>
+        <hataAck>Basarili</hataAck>
+        <hesapNo>1234567890123456</hesapNo>
+        <hareketdetay>
+          <HareketlerDetay>
+            <timeStamp>ZR-TS-001</timeStamp>
+            <islemTarihi>2026-07-21T09:30:00</islemTarihi>
+            <tutar>750,25</tutar>
+            <borcAlacak>A</borcAlacak>
+            <aciklama>Credit payment</aciklama>
+            <iban>TR330006100519786457841326</iban>
+          </HareketlerDetay>
+          <HareketlerDetay>
+            <dekontNo>DK-002</dekontNo>
+            <islemTarihi>2026-07-21T10:00:00</islemTarihi>
+            <tutar>100</tutar>
+            <borcAlacak>B</borcAlacak>
+            <islemAciklama>Debit fee</islemAciklama>
+          </HareketlerDetay>
+        </hareketdetay>
+      </SorgulaHesapHareketZamanIleResult>
+    </SorgulaHesapHareketZamanIleResponse>
+  </soap:Body>
+</soap:Envelope>

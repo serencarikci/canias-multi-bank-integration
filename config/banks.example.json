@@ -1,0 +1,33 @@
+{
+  "banks": [
+    {
+      "type": "ZIRAAT",
+      "enabled": true,
+      "endpoint": "https://hesap.ziraatbank.com.tr/HEK_NKYWS/HesapHareketleri.asmx",
+      "institutionCode": "${ZIRAAT_INSTITUTION_CODE}",
+      "password": "${ZIRAAT_PASSWORD}",
+      "iptalFisGetir": "H",
+      "accounts": [
+        {
+          "networkId": "033",
+          "customerNumber": "${ZIRAAT_CUSTOMER_NUMBER}",
+          "additionalNumber": "${ZIRAAT_ADDITIONAL_NUMBER}"
+        }
+      ]
+    },
+    {
+      "type": "VAKIFBANK",
+      "enabled": true,
+      "endpoint": "${VAKIFBANK_ENDPOINT}",
+      "username": "${VAKIFBANK_USERNAME}",
+      "password": "${VAKIFBANK_PASSWORD}",
+      "accounts": [
+        {
+          "networkId": "033",
+          "accountNumber": "${VAKIFBANK_ACCOUNT_NUMBER}",
+          "clientNumber": "${VAKIFBANK_CLIENT_NUMBER}"
+        }
+      ]
+    }
+  ]
+}

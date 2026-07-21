@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope xmlns="http://www.w3.org/2003/05/soap-envelope">
+  <Body>
+    <SorgulaHesapHareketZamanIleResponse xmlns="http://tempuri.org/">
+      <SorgulaHesapHareketZamanIleResult>
+        <hataKodu>12</hataKodu>
+        <hataAck>Limit asildi</hataAck>
+      </SorgulaHesapHareketZamanIleResult>
+    </SorgulaHesapHareketZamanIleResponse>
+  </Body>
+</Envelope>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetirHareketResponse xmlns="http://tempuri.org/">
+      <GetirHareketResult>
+        <Hesaplar>
+          <DtoEkstreHesap>
+            <Hareketler>
+              <DtoEkstreHareket>
+                <IslemNo>VB-1001</IslemNo>
+                <IslemTarihZamani>2026-07-21T10:15:00</IslemTarihZamani>
+                <Tutar>1500.50</Tutar>
+                <BorcAlacak>A</BorcAlacak>
+                <Aciklama>Test credit movement</Aciklama>
+                <Detaylar>
+                  <GonderenIbanKumarasi>TR120001001234567890123456</GonderenIbanKumarasi>
+                </Detaylar>
+              </DtoEkstreHareket>
+              <DtoEkstreHareket>
+                <IslemNo>VB-1002</IslemNo>
+                <IslemTarihZamani>2026-07-21T11:00:00</IslemTarihZamani>
+                <Tutar>200</Tutar>
+                <BorcAlacak>B</BorcAlacak>
+                <Aciklama>Debit movement</Aciklama>
+              </DtoEkstreHareket>
+            </Hareketler>
+          </DtoEkstreHesap>
+        </Hesaplar>
+      </GetirHareketResult>
+    </GetirHareketResponse>
+  </soap:Body>
+</soap:Envelope>

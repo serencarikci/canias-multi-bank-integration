@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+logs
+.git
+.env
+config/banks.json
+tests
+*.md

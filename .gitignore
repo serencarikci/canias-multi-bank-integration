@@ -1,0 +1,9 @@
+node_modules/
+dist/
+build-js/
+coverage/
+logs/
+config/.env
+config/banks.json
+*.log
+.DS_Store

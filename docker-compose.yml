@@ -1,0 +1,55 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    env_file:
+      - config/.env
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ${DB_PASSWORD}
+      MSSQL_PID: Developer
+    ports:
+      - '1433:1433'
+    volumes:
+      - mssql_data:/var/opt/mssql
+      - ./migrations:/migrations:ro
+    healthcheck:
+      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$${MSSQL_SA_PASSWORD}" -C -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    env_file:
+      - config/.env
+    depends_on:
+      mssql:
+        condition: service_healthy
+    environment:
+      MSSQL_SA_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    volumes:
+      - ./migrations:/migrations:ro
+      - ./migrations/applyMigration.sh:/apply-migration.sh:ro
+    entrypoint: ['/bin/bash', '/apply-migration.sh']
+    restart: 'no'
+
+  app:
+    build: .
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    env_file:
+      - config/.env
+    environment:
+      DB_HOST: mssql
+      BANK_CONFIG_PATH: /app/config/banks.json
+    ports:
+      - '${PORT:-3000}:3000'
+    restart: unless-stopped
+
+volumes:
+  mssql_data:

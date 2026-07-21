@@ -1,0 +1,71 @@
+{
+  "name": "canias-bank-movement-integration",
+  "version": "1.0.0",
+  "description": "CANIAS Bank Movement Integration Service — SOAP banks to MSSQL",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --runInBand",
+    "test:integration": "jest --runInBand --testPathPattern=integration",
+    "db:migrate": "node migrations/migrate.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": ["<rootDir>/tests"],
+    "testMatch": ["<rootDir>/tests/**/*.js"],
+    "testPathIgnorePatterns": ["/node_modules/", "<rootDir>/tests/setup.js"],
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js",
+      "!src/banks/common/soapHttpClient.js",
+      "!src/http/controllers/**",
+      "!config/loadConfig.js",
+      "!src/banks/**/*SoapClient.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageThreshold": {
+      "global": {
+        "statements": 83,
+        "branches": 69,
+        "functions": 85,
+        "lines": 83
+      }
+    },
+    "clearMocks": true,
+    "forceExit": true
+  },
+  "keywords": [
+    "canias",
+    "bank",
+    "soap",
+    "mssql"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "decimal.js": "^10.4.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "fast-xml-parser": "^4.5.1",
+    "helmet": "^8.0.0",
+    "luxon": "^3.5.0",
+    "mssql": "^11.0.1",
+    "node-cron": "^3.0.3",
+    "pino": "^9.6.0",
+    "pino-http": "^10.3.0",
+    "uuid": "^11.0.5",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
