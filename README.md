@@ -284,3 +284,4 @@ Integration tests need a reachable MSSQL instance and are skipped by default.
 | `npm run test:coverage` | Coverage report |
 | `npm run test:integration` | DB integration tests |
 | `npm run db:migrate` | Apply SQL migration |
+
